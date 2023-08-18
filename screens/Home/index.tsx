@@ -1,21 +1,33 @@
-import React from "react";
-import { Button } from "react-native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import React from 'react';
+import { Button, View } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { RootStackParamList } from "../../types/Navigation";
+import { RootStackParamList } from '../../types/Navigation';
 
-type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Home">;
+type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 interface HomeProps {
-  navigation: HomeScreenProps["navigation"];
+  navigation: HomeScreenProps['navigation'];
 }
 
 const HomeScreen = ({ navigation }: HomeProps) => {
   return (
-    <Button
-      title="Create a challenge"
-      onPress={() => navigation.navigate("CreateChallenge")}
-    />
+    <View>
+      <Button
+        title="Create a challenge"
+        onPress={() => navigation.navigate('CreateChallenge')}
+      />
+
+      <Button
+        title="Check the challenges"
+        onPress={() => navigation.navigate('ChallengesList')}
+      />
+
+      <Button
+        title="Check the rewards"
+        onPress={() => navigation.navigate('RewardsList')}
+      />
+    </View>
   );
 };
 

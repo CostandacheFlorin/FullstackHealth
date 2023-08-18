@@ -6,16 +6,16 @@ type StarRatingProps = {
   rating: number;
 };
 const StarRating = ({ rating }: StarRatingProps) => {
-  const filledStars = Math.floor(rating);
+  const filledStars = Math.floor(Number(rating));
   const remainingStars = 5 - filledStars;
 
   return (
     <View style={{ flexDirection: 'row' }}>
       {[...Array(filledStars)].map((_, index) => (
-        <Entypo key={index} name="star" size={20} color="black" />
+        <Entypo key={index} name="star" size={30} color="gold" />
       ))}
       {[...Array(remainingStars)].map((_, index) => (
-        <Entypo key={index} name="star" size={20} color="gold" />
+        <Entypo key={index} name="star" size={30} color="black" />
       ))}
     </View>
   );

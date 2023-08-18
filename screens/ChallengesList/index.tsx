@@ -6,11 +6,11 @@ import ChallengeItem from '../../components/ChallengeItem';
 import Searchbar from '../../components/Searchbar';
 
 export enum Difficulties {
-  BEGINNER = 'beginner',
-  INTERMEDIATE = 'intermediate',
-  ADVANCED = 'advanced',
-  EXPERT = 'expert',
-  IRON_MAN = 'iron',
+  BEGINNER = 1,
+  INTERMEDIATE = 2,
+  ADVANCED = 3,
+  EXPERT = 4,
+  IRON_MAN = 5,
 }
 
 const networkImage = 'https://i.imgur.com/DiYUpnd.jpeg';
@@ -66,35 +66,17 @@ const DUMMY_CHALLENGES = [
 ];
 
 const data = [
-  { label: 'Beginner', value: 'beginner' },
-  { label: 'Intermediate', value: 'intermediate' },
-  { label: 'Advanced', value: 'advanced' },
-  { label: 'Expert', value: 'expert' },
-  { label: 'Iron man', value: 'iron' },
+  { label: 'Beginner', value: 1 },
+  { label: 'Intermediate', value: 2 },
+  { label: 'Advanced', value: 3 },
+  { label: 'Expert', value: 4 },
+  { label: 'Iron man', value: 5 },
 ];
 
 const ChallengesList = () => {
   const [searchText, setSearchText] = useState('');
   const [difficulties, setDifficulties] = useState<string[]>([]);
 
-  let filteredData = DUMMY_CHALLENGES;
-  if (searchText !== '' || difficulties.length !== 0) {
-    filteredData = DUMMY_CHALLENGES.filter(
-      (challenge) =>
-        (difficulties.includes(challenge.difficultyLevel) &&
-          challenge.description
-            .toLowerCase()
-            .includes(searchText.toLowerCase())) ||
-        challenge.title.toLowerCase().includes(searchText.toLowerCase())
-    );
-  }
-  console.log(searchText);
-  console.log(DUMMY_CHALLENGES[0].title);
-  console.log(
-    DUMMY_CHALLENGES[0].description
-      .toLowerCase()
-      .includes(searchText.toLowerCase())
-  );
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
       <View>
@@ -128,7 +110,7 @@ const ChallengesList = () => {
         </View>
       </View>
       <FlatList
-        data={filteredData}
+        data={DUMMY_CHALLENGES}
         keyExtractor={(challenge) => challenge.id.toString()}
         renderItem={({ item }) => {
           return (

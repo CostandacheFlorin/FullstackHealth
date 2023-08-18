@@ -1,42 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import StarRating from '../StarRating';
-import { Difficulties } from '../../screens/ChallengesList';
+import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 
-type ChallengeItemProps = {
+type RewardItemProps = {
   title: string;
   imageSource: string;
   description: string;
   rewardValue: number;
-  difficultyLevel: number;
 };
 
-const ChallengeItem = ({
+const RewardItem = ({
   title,
   imageSource,
   description,
   rewardValue,
-  difficultyLevel,
-}: ChallengeItemProps) => {
-  const acceptChallengeHandler = () => {};
+}: RewardItemProps) => {
+  const redeemHandler = () => {
+    console.log('RESPECT');
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       <Image style={styles.image} source={{ uri: imageSource }} />
-
       <Text style={styles.description}>{description}</Text>
-      <Text style={styles.reward}>{`Reward: ${rewardValue} points`}</Text>
+      <Text style={styles.reward}>{`Cost: ${rewardValue} points`}</Text>
 
-      <View style={styles.difficultyContainer}>
-        <Text style={{ textAlign: 'center' }}>Difficulty level</Text>
-        <StarRating rating={difficultyLevel} />
-      </View>
-
-      <TouchableOpacity
-        style={styles.submitButton}
-        onPress={acceptChallengeHandler}
-      >
-        <Text style={styles.submitText}>Accept</Text>
+      <TouchableOpacity style={styles.submitButton} onPress={redeemHandler}>
+        <Text style={styles.submitText}>Redeem</Text>
       </TouchableOpacity>
     </View>
   );
@@ -51,7 +40,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 30,
-    backgroundColor: 'gray',
+    backgroundColor: 'lightgray',
   },
   title: {
     fontSize: 30,
@@ -72,14 +61,10 @@ const styles = StyleSheet.create({
     color: 'brown',
     textAlign: 'center',
   },
-  difficultyContainer: {
-    gap: 10,
-    alignSelf: 'center',
-  },
   submitButton: {
     padding: 10,
     alignSelf: 'center',
-    backgroundColor: 'orange',
+    backgroundColor: 'green',
     borderRadius: 10,
   },
   submitText: {
@@ -87,5 +72,4 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
-export default ChallengeItem;
+export default RewardItem;
