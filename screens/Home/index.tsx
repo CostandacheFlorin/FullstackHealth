@@ -27,6 +27,11 @@ const HomeScreen = ({ navigation }: HomeProps) => {
         title="Check the rewards"
         onPress={() => navigation.navigate('RewardsList')}
       />
+
+      <Button
+        title="Check your profile"
+        onPress={() => navigation.navigate('MyProfile')}
+      />
     </View>
   );
 };

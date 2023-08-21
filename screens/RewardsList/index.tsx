@@ -4,7 +4,7 @@ import Searchbar from '../../components/Searchbar';
 import RewardItem from '../../components/RewardItem';
 const networkImage = 'https://i.imgur.com/DiYUpnd.jpeg';
 
-const DUMMY_REWARDS = [
+export const DUMMY_REWARDS = [
   {
     id: 1,
     title: 'Coke Can',
