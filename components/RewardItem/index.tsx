@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 
 type RewardItemProps = {
+  id: string | number;
   title: string;
   imageSource: string;
   description: string;
@@ -9,6 +10,7 @@ type RewardItemProps = {
 };
 
 const RewardItem = ({
+  id,
   title,
   imageSource,
   description,

@@ -8,6 +8,7 @@ import ChallengesList from './screens/ChallengesList';
 import RewardsList from './screens/RewardsList';
 import MyProfile from './screens/MyProfile';
 import RedeemedList from './screens/RedeemedList';
+import CreateReward from './screens/CreateReward';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
           component={RedeemedList}
           options={{ headerBackTitle: 'My profile' }}
         />
+        <Stack.Screen name="CreateReward" component={CreateReward} />
       </Stack.Navigator>
     </NavigationContainer>
   );

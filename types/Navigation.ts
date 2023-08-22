@@ -5,6 +5,5 @@ export type RootStackParamList = {
   RewardsList: undefined;
   MyProfile: undefined;
   RedeemedList: undefined;
-
-  // Add more screen names and parameter types as needed
+  CreateReward: undefined;
 };

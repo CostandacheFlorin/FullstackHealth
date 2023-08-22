@@ -12,10 +12,13 @@ const RedeemedList = () => {
         renderItem={({ item }) => {
           return (
             <RedeemedItem
+              id={item.id}
               title={item.title}
               description={item.description}
               imageSource={item.imageSource}
               rewardValue={item.rewardValue}
+              usedAt={item.usedAt}
+              redeemedAt={item.createdAt}
             />
           );
         }}

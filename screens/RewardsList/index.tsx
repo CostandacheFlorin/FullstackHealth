@@ -4,13 +4,24 @@ import Searchbar from '../../components/Searchbar';
 import RewardItem from '../../components/RewardItem';
 const networkImage = 'https://i.imgur.com/DiYUpnd.jpeg';
 
-export const DUMMY_REWARDS = [
+export type RewardType = {
+  id: string | number;
+  title: string;
+  imageSource: string;
+  description: string;
+  rewardValue: number;
+  createdAt: Date;
+  usedAt?: Date;
+};
+export const DUMMY_REWARDS: RewardType[] = [
   {
     id: 1,
     title: 'Coke Can',
     imageSource: networkImage,
     description: 'You can drink a can of coke',
     rewardValue: 100,
+    createdAt: new Date(),
+    usedAt: new Date(),
   },
   {
     id: 2,
@@ -18,6 +29,8 @@ export const DUMMY_REWARDS = [
     imageSource: networkImage,
     description: 'You can eat a bar of chocolate ',
     rewardValue: 43,
+    createdAt: new Date(),
+    usedAt: new Date(),
   },
   {
     id: 3,
@@ -25,6 +38,8 @@ export const DUMMY_REWARDS = [
     imageSource: networkImage,
     description: 'You can skip a day of gym',
     rewardValue: 999999,
+    createdAt: new Date(),
+    usedAt: new Date(),
   },
   {
     id: 4,
@@ -32,6 +47,7 @@ export const DUMMY_REWARDS = [
     imageSource: networkImage,
     description: 'Burgir',
     rewardValue: 63,
+    createdAt: new Date(),
   },
   {
     id: 5,
@@ -39,6 +55,7 @@ export const DUMMY_REWARDS = [
     imageSource: networkImage,
     description: 'Pizza description',
     rewardValue: 73,
+    createdAt: new Date(),
   },
 ];
 const RewardsList = () => {
@@ -61,6 +78,7 @@ const RewardsList = () => {
         renderItem={({ item }) => {
           return (
             <RewardItem
+              id={item.id}
               title={item.title}
               description={item.description}
               imageSource={item.imageSource}

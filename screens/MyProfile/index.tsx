@@ -18,6 +18,7 @@ const MyProfile = ({ navigation }: Props) => {
     <View style={styles.container}>
       <View style={styles.profileInfo}>
         <Text style={styles.username}>Username</Text>
+        <Text style={styles.points}>Level</Text>
         <Text style={styles.points}>Points: 1000</Text>
         <Text style={styles.streak}>Current Streak: 7 days</Text>
         <Text style={styles.streak}>Highest Streak: 14 days</Text>

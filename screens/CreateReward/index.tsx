@@ -1,47 +1,42 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
   Text,
-  TextInput,
   Button,
   Image,
   TouchableOpacity,
 } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import { Video, ResizeMode } from 'expo-av';
-import RatingPicker from '../../components/RatingPicker';
 import Input from '../../components/Input';
+import { Video, ResizeMode } from 'expo-av';
+import * as ImagePicker from 'expo-image-picker';
 
-type ChallengeType = {
+type RewardType = {
   title: string;
   description: string;
   value: number;
   image: string;
-  difficulty: number;
 };
 
-type CreateChallengeErrorsType = {
+type CreateRewardErrorsType = {
   title: boolean;
   description: boolean;
   value: boolean;
 };
 
-const CreateChallenge = () => {
-  const [challenge, setChallenge] = useState<ChallengeType>({
+const CreateReward = () => {
+  const [reward, setReward] = useState<RewardType>({
     title: '',
     description: '',
     value: 0,
     image: '',
-    difficulty: 0,
   });
 
-  const [errors, setErrors] = useState<CreateChallengeErrorsType>({
+  const [errors, setErrors] = useState<CreateRewardErrorsType>({
     title: false,
     description: false,
     value: false,
   });
-  const [difficultyLevel, setDifficultyLevel] = useState<number>(1);
   const [media, setMedia] = useState<string | null>(null);
   const [mediaType, setMediaType] = useState<'image' | 'video' | undefined>();
   const [status, setStatus] = useState({});
@@ -60,27 +55,27 @@ const CreateChallenge = () => {
   };
 
   const handleInputChange = (key: string, value: string | number) => {
-    setChallenge((prevChallenge) => ({
-      ...prevChallenge,
+    setReward((prevReward) => ({
+      ...prevReward,
       [key]: value,
     }));
   };
 
-  const createChallengeHandler = () => {
+  const createRewardHandler = () => {
     let tempErrors = {
       title: false,
       description: false,
       value: false,
     };
-    if (challenge.title.trim().length === 0) {
+    if (reward.title.trim().length === 0) {
       tempErrors = { ...tempErrors, title: true };
     }
 
-    if (challenge.description.trim().length === 0) {
+    if (reward.description.trim().length === 0) {
       tempErrors = { ...tempErrors, description: true };
     }
 
-    if (challenge.value <= 0) {
+    if (reward.value <= 0) {
       tempErrors = { ...tempErrors, value: true };
     }
 
@@ -88,12 +83,11 @@ const CreateChallenge = () => {
       setErrors(tempErrors);
       return;
     }
-    setChallenge({
+    setReward({
       title: '',
       description: '',
       value: 0,
       image: '',
-      difficulty: 0,
     });
 
     setErrors({
@@ -102,13 +96,15 @@ const CreateChallenge = () => {
       value: false,
     });
   };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Create a challenge</Text>
+      <Text style={styles.title}>Create a reward</Text>
+
       <View style={styles.inputContainer}>
         <Input
           label="Title"
-          value={challenge.title}
+          value={reward.title}
           onChangeText={(value: string) => handleInputChange('title', value)}
           error={errors.title}
           errorMessage="Title cannot be empty"
@@ -119,20 +115,21 @@ const CreateChallenge = () => {
       <View style={styles.inputContainer}>
         <Input
           label="Description"
-          value={challenge.description}
+          value={reward.description}
           onChangeText={(value: string) =>
             handleInputChange('description', value)
           }
           error={errors.description}
           errorMessage="Description cannot be empty"
           labelStyle={{ fontSize: 20, textAlign: 'center' }}
-          placeholder="Choose a description"
+          placeholder="Enter a description"
         />
       </View>
+
       <View style={styles.inputContainer}>
         <Input
-          label="Reward value"
-          value={challenge.value.toString()}
+          label="Points cost"
+          value={reward.value.toString()}
           onChangeText={(value: string) =>
             handleInputChange('value', Number(value))
           }
@@ -143,6 +140,7 @@ const CreateChallenge = () => {
           type="number-pad"
         />
       </View>
+
       <View>
         <Text style={styles.label}>Image / Video</Text>
         <Button title="Pick an image" onPress={pickImage} />
@@ -160,26 +158,15 @@ const CreateChallenge = () => {
           />
         )}
       </View>
-
-      <View>
-        <Text style={styles.label}>Difficulty level</Text>
-        <RatingPicker
-          style={{ alignSelf: 'center', margin: 5 }}
-          rating={difficultyLevel}
-          setRating={setDifficultyLevel}
-        />
-      </View>
-
       <TouchableOpacity
         style={styles.submitButton}
-        onPress={createChallengeHandler}
+        onPress={createRewardHandler}
       >
         <Text style={styles.submitText}>Create a challenge</Text>
       </TouchableOpacity>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     gap: 10,
@@ -215,4 +202,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateChallenge;
+export default CreateReward;
