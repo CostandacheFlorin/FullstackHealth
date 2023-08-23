@@ -13,21 +13,23 @@ interface HomeProps {
 const HomeScreen = ({ navigation }: HomeProps) => {
   return (
     <View>
+      <Button title="Login" onPress={() => navigation.navigate('Login')} />
+      <Button
+        title="Register"
+        onPress={() => navigation.navigate('Register')}
+      />
       <Button
         title="Create a challenge"
         onPress={() => navigation.navigate('CreateChallenge')}
       />
-
       <Button
         title="Check the challenges"
         onPress={() => navigation.navigate('ChallengesList')}
       />
-
       <Button
         title="Check the rewards"
         onPress={() => navigation.navigate('RewardsList')}
       />
-
       <Button
         title="Check your profile"
         onPress={() => navigation.navigate('MyProfile')}

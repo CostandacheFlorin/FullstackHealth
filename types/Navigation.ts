@@ -6,4 +6,6 @@ export type RootStackParamList = {
   MyProfile: undefined;
   RedeemedList: undefined;
   CreateReward: undefined;
+  Register: undefined;
+  Login: undefined;
 };

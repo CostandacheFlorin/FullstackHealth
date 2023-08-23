@@ -9,12 +9,16 @@ import RewardsList from './screens/RewardsList';
 import MyProfile from './screens/MyProfile';
 import RedeemedList from './screens/RedeemedList';
 import CreateReward from './screens/CreateReward';
+import Register from './screens/Register';
+import Login from './screens/Login';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
