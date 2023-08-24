@@ -38,6 +38,11 @@ const HomeScreen = ({ navigation }: HomeProps) => {
         title="Create a reward"
         onPress={() => navigation.navigate('CreateReward')}
       />
+
+      <Button
+        title="Unlocked rewards"
+        onPress={() => navigation.navigate('UnlockedRewards')}
+      />
     </View>
   );
 };

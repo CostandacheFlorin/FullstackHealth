@@ -11,6 +11,7 @@ import RedeemedList from './screens/RedeemedList';
 import CreateReward from './screens/CreateReward';
 import Register from './screens/Register';
 import Login from './screens/Login';
+import UnlockedRewards from './screens/UnlockedRewards';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -34,6 +35,11 @@ export default function App() {
           options={{ headerBackTitle: 'My profile' }}
         />
         <Stack.Screen name="CreateReward" component={CreateReward} />
+        <Stack.Screen
+          name="UnlockedRewards"
+          component={UnlockedRewards}
+          options={{ headerTitle: 'Your rewards' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

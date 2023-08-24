@@ -8,4 +8,5 @@ export type RootStackParamList = {
   CreateReward: undefined;
   Register: undefined;
   Login: undefined;
+  UnlockedRewards: undefined;
 };
