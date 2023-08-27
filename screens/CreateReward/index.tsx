@@ -6,10 +6,12 @@ import {
   Button,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import Input from '../../components/Input';
 import { Video, ResizeMode } from 'expo-av';
 import * as ImagePicker from 'expo-image-picker';
+import { colors } from '../../styles/constants';
 
 type RewardType = {
   title: string;
@@ -98,7 +100,7 @@ const CreateReward = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>Create a reward</Text>
 
       <View style={styles.inputContainer}>
@@ -164,12 +166,13 @@ const CreateReward = () => {
       >
         <Text style={styles.submitText}>Create a challenge</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
   container: {
     gap: 10,
+    backgroundColor: colors.background,
   },
   title: {
     fontSize: 30,
@@ -194,7 +197,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 15,
     borderRadius: 8,
-    backgroundColor: 'green',
+    backgroundColor: colors.primary,
   },
   submitText: {
     fontWeight: 'bold',

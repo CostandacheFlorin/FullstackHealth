@@ -8,6 +8,7 @@ import {
   ViewStyle,
   KeyboardType,
 } from 'react-native';
+import { colors } from '../../styles/constants';
 interface CustomInputProps {
   label: string;
   value: string;
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
     color: 'red',
     marginTop: 4,
     paddingLeft: 10,
+    fontWeight: 'bold',
   },
 });
 

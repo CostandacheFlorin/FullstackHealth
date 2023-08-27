@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Eye from '../../assets/icons/Eye';
 import EyeCut from '../../assets/icons/EyeCut';
+import { colors } from '../../styles/constants';
 
 const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -80,20 +81,20 @@ const RegisterPage: React.FC = () => {
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#fff',
   },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: '#fff',
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: 'white',
+    color: '#000',
   },
   input: {
     width: '100%',
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
     tintColor: '#777',
   },
   registerButton: {
-    backgroundColor: 'blue',
+    backgroundColor: colors.primary,
     padding: 15,
     borderRadius: 10,
     width: '100%',

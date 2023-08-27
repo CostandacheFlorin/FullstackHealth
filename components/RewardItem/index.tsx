@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { colors } from '../../styles/constants';
 
 type RewardItemProps = {
   id: string | number;
@@ -42,15 +43,16 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 30,
-    backgroundColor: 'lightgray',
+    backgroundColor: colors.tertiary,
   },
   title: {
     fontSize: 30,
     textAlign: 'center',
+    color: colors.primary,
   },
   reward: {
     textAlign: 'center',
-    color: 'green',
+    color: colors.secondary,
     fontWeight: 'bold',
   },
   image: {
@@ -60,13 +62,13 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 20,
-    color: 'brown',
+    color: colors.primary,
     textAlign: 'center',
   },
   submitButton: {
     padding: 10,
     alignSelf: 'center',
-    backgroundColor: 'green',
+    backgroundColor: colors.primary,
     borderRadius: 10,
   },
   submitText: {

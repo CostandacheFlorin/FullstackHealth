@@ -25,7 +25,11 @@ export default function App() {
           component={HomeScreen}
           options={{ title: 'Home' }}
         />
-        <Stack.Screen name="CreateChallenge" component={CreateChallenge} />
+        <Stack.Screen
+          name="CreateChallenge"
+          component={CreateChallenge}
+          options={{ title: 'Create a challenge' }}
+        />
         <Stack.Screen name="ChallengesList" component={ChallengesList} />
         <Stack.Screen name="RewardsList" component={RewardsList} />
         <Stack.Screen name="MyProfile" component={MyProfile} />

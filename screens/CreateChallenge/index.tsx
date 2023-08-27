@@ -7,11 +7,13 @@ import {
   Button,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Video, ResizeMode } from 'expo-av';
 import RatingPicker from '../../components/RatingPicker';
 import Input from '../../components/Input';
+import { colors } from '../../styles/constants';
 
 type ChallengeType = {
   title: string;
@@ -103,79 +105,80 @@ const CreateChallenge = () => {
     });
   };
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Create a challenge</Text>
-      <View style={styles.inputContainer}>
-        <Input
-          label="Title"
-          value={challenge.title}
-          onChangeText={(value: string) => handleInputChange('title', value)}
-          error={errors.title}
-          errorMessage="Title cannot be empty"
-          labelStyle={{ fontSize: 20, textAlign: 'center' }}
-          placeholder="Enter a title"
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <Input
-          label="Description"
-          value={challenge.description}
-          onChangeText={(value: string) =>
-            handleInputChange('description', value)
-          }
-          error={errors.description}
-          errorMessage="Description cannot be empty"
-          labelStyle={{ fontSize: 20, textAlign: 'center' }}
-          placeholder="Choose a description"
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <Input
-          label="Reward value"
-          value={challenge.value.toString()}
-          onChangeText={(value: string) =>
-            handleInputChange('value', Number(value))
-          }
-          error={errors.value}
-          errorMessage="Reward value cannot be 0"
-          labelStyle={{ fontSize: 20, textAlign: 'center' }}
-          placeholder="Set the reward value"
-          type="number-pad"
-        />
-      </View>
-      <View>
-        <Text style={styles.label}>Image / Video</Text>
-        <Button title="Pick an image" onPress={pickImage} />
-        {mediaType === 'image' && media && (
-          <Image source={{ uri: media }} style={styles.media} />
-        )}
-        {mediaType === 'video' && media && (
-          <Video
-            source={{ uri: media }}
-            style={styles.media}
-            resizeMode={ResizeMode.CONTAIN}
-            useNativeControls
-            isLooping
-            onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+    <View style={styles.formContainer}>
+      <ScrollView style={styles.container}>
+        <View style={styles.inputContainer}>
+          <Input
+            label="Title"
+            value={challenge.title}
+            onChangeText={(value: string) => handleInputChange('title', value)}
+            error={errors.title}
+            errorMessage="Title cannot be empty"
+            labelStyle={{ fontSize: 20, textAlign: 'center' }}
+            placeholder="Enter a title"
           />
-        )}
-      </View>
+        </View>
+        <View style={styles.inputContainer}>
+          <Input
+            label="Description"
+            value={challenge.description}
+            onChangeText={(value: string) =>
+              handleInputChange('description', value)
+            }
+            error={errors.description}
+            errorMessage="Description cannot be empty"
+            labelStyle={{ fontSize: 20, textAlign: 'center' }}
+            placeholder="Choose a description"
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          <Input
+            label="Reward value"
+            value={challenge.value.toString()}
+            onChangeText={(value: string) =>
+              handleInputChange('value', Number(value))
+            }
+            error={errors.value}
+            errorMessage="Reward value cannot be 0"
+            labelStyle={{ fontSize: 20, textAlign: 'center' }}
+            placeholder="Set the reward value"
+            type="number-pad"
+          />
+        </View>
+        <View>
+          <Text style={styles.label}>Image / Video</Text>
+          <Button title="Pick an image" onPress={pickImage} />
+          {mediaType === 'image' && media && (
+            <Image source={{ uri: media }} style={styles.media} />
+          )}
+          {mediaType === 'video' && media && (
+            <Video
+              source={{ uri: media }}
+              style={styles.media}
+              resizeMode={ResizeMode.CONTAIN}
+              useNativeControls
+              isLooping
+              onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+            />
+          )}
+        </View>
 
-      <View>
-        <Text style={styles.label}>Difficulty level</Text>
-        <RatingPicker
-          style={{ alignSelf: 'center', margin: 5 }}
-          rating={difficultyLevel}
-          setRating={setDifficultyLevel}
-        />
-      </View>
+        <View>
+          <Text style={styles.label}>Difficulty level</Text>
+          <RatingPicker
+            style={{ alignSelf: 'center', margin: 5 }}
+            rating={difficultyLevel}
+            setRating={setDifficultyLevel}
+          />
+        </View>
 
-      <TouchableOpacity
-        style={styles.submitButton}
-        onPress={createChallengeHandler}
-      >
-        <Text style={styles.submitText}>Create a challenge</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={createChallengeHandler}
+        >
+          <Text style={styles.submitText}>Create a challenge</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 };
@@ -183,6 +186,8 @@ const CreateChallenge = () => {
 const styles = StyleSheet.create({
   container: {
     gap: 10,
+    backgroundColor: colors.background,
+    paddingTop: 15,
   },
   title: {
     fontSize: 30,
@@ -196,9 +201,11 @@ const styles = StyleSheet.create({
   inputContainer: { marginHorizontal: 25 },
   media: {
     width: '90%',
-    height: 200,
+    height: 300,
     marginTop: 20,
     alignSelf: 'center',
+    resizeMode: 'contain',
+    marginBottom: 20,
   },
   submitButton: {
     borderWidth: 1,
@@ -207,7 +214,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 15,
     borderRadius: 8,
-    backgroundColor: 'green',
+    backgroundColor: colors.primary,
   },
   submitText: {
     fontWeight: 'bold',
